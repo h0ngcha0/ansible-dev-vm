@@ -1,0 +1,35 @@
+# This playbook installs scala and its development environment
+
+- hosts: all
+  vars:
+    scala_version: 2.11.1
+    sbt_version: 0.13.5
+  tasks:
+  - name: create a temp directory
+    command: mktemp -d /tmp/ansible-scala-XXXX
+    register: tempdir
+
+  - name: download scala
+    get_url: url="http://www.scala-lang.org/files/archive/scala-{{ scala_version }}.deb" dest={{ tempdir.stdout }}
+
+  - name: install scala deb package
+    command: dpkg -i {{ tempdir.stdout }}/scala-{{ scala_version }}.deb
+    sudo: yes
+
+  - name: install scala with the specific version
+    apt: name=scala update_cache=yes
+    sudo: yes
+
+  - name: download sbt
+    get_url: url="http://dl.bintray.com/sbt/debian/sbt-{{ sbt_version }}.deb" dest={{ tempdir.stdout }}
+
+  - name: install sbt
+    command: dpkg -i {{ tempdir.stdout }}/sbt-{{ sbt_version }}.deb
+    sudo: yes
+
+  - name: install sbt using apt
+    apt: name=sbt update_cache=yes
+    sudo: yes
+
+  - name: clean up the temp dir
+    command: rm -rf {{ tempdir.stdout }}

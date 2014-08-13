@@ -1,0 +1,16 @@
+# This playbook installs and configures emacs
+
+- hosts: all
+  tasks:
+  - name: install emacs24
+    apt: name=emacs24 state=present
+    sudo: yes
+
+  - name: install ispell for spell checkers used in emacs
+    apt: name=ispell state=present
+    sudo: yes
+
+  - name: install emacs config
+    git: repo=https://github.com/liuhongchao/emacs-starter-kit.git
+         dest=.emacs.d/
+         version=for-ansible-vm

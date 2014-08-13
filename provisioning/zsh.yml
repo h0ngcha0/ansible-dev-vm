@@ -1,0 +1,17 @@
+# This playbook installs and configures zsh
+
+- hosts: all
+  tasks:
+  - name: install zsh
+    apt: name=zsh state=present
+    sudo: yes
+
+  - name: oh my zsh
+    git: repo=https://github.com/robbyrussell/oh-my-zsh.git
+         dest=.oh-my-zsh/
+
+  - name: populate .zshrc
+    command: cp .oh-my-zsh/templates/zshrc.zsh-template .zshrc
+
+  - name: replace robbyrussell to ys
+    command: sed -i s/robbyrussell/rgm/g .zshrc

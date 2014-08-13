@@ -1,0 +1,28 @@
+# This playbook installs and configures various javascript
+# related software and its development environment
+
+- hosts: all
+  tasks:
+  - name: install the awesome API renderer
+    npm: name=aglio global=yes
+    sudo: yes
+
+  - name: install bower
+    npm: name=bower global=yes
+    sudo: yes
+
+  - name: install grunt-cli
+    npm: name=grunt-cli global=yes
+    sudo: yes
+
+  - name: install yo
+    npm: name=yo global=yes
+    sudo: yes
+
+  - name: install meanjs generator
+    npm: name=generator-meanjs global=yes
+    sudo: yes
+
+  - name: install tern
+    npm: name=tern global=yes
+    sudo: yes

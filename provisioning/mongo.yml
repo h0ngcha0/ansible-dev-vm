@@ -1,0 +1,7 @@
+# This playbook installs and configures mongodb
+
+- hosts: all
+  tasks:
+  - name: install mongodb
+    apt: name=mongodb state=present
+    sudo: yes

@@ -1,0 +1,14 @@
+# This playbook installs the user in the target system
+# password is set to 12345
+
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: create the same user as whatever used to run vagrant up
+    user: name={{ username }} group=admin groups=sudo shell=/bin/zsh ssh_key_bits=2048
+          password="$6$ZOaS5Hbo$lXL4za6.4Bzeod3/KIO7pgn8x3qW5Zjf81q004Nz1FAcxwZsRTRNHeOSofRjAylCKvn/L4kIdYKCIArHpq2Qm."
+          state=present generate_ssh_key=yes
+
+  - name: change setting for vagrant user
+    user: name=vagrant group=admin groups=docker shell=/bin/zsh
+
