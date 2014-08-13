@@ -1,20 +1,14 @@
 ## Summary
 
 With this vagrant you can create a virtual machine with all that is
-needed for development
-
-
-  * have a ssh-agent running
-  * A relatively Virtualbox
-  * A recent Vagrant
+needed for Erlang, Scala and Javascript development using Emacs.
 
 ## Install
 
 ### Setup ssh access
 
 The virtual environment will authenticate use ssh-agent forwarding to your host
-machine. For that to work you need keys for live access and stash to your local
-ssh agent:
+machine.
 
     ssh-add <my-super-secret-key>
 
@@ -25,13 +19,9 @@ You can verify the keys are loaded with
 Once this is done, the virtual machine will not require the private keys, so you
 don't need to copy them around.
 
-**WARNING:** Provisioning the virtual machine will not be possible if this is
-not properly set for stash access so make sure you have the stash key loaded
-before trying to spin up the vagrant.
-
 ### External repositories
 
-#### Ubuntu 12.04
+#### Ubuntu 14.04
 
 Install the latest Vagrant and VirtualBox. At the moment of writing this they
 were: Vagrant 1.5.1 and Virtualbox 4.3.10
@@ -65,10 +55,6 @@ Create the entry in ~/.ssh/config so that ansible can connect to vm
 Create the virtual machine
 
     vagrant up
-
-The `Vagrantfile` assumes that your user name in the host machine is the same as
-the one you will use to log in the live machines and in stash. If that is not
-the case run `USER=<my-user-name> vagrant up` instead.
 
 This can take quite some time the first time you run it as the virtual
 environment needs to be provisioned.
