@@ -14,3 +14,7 @@
     git: repo=https://github.com/liuhongchao/emacs-starter-kit.git
          dest=.emacs.d/
          version=for-ansible-vm
+
+  - name: install fortune
+    apt: name=fortune state=present
+    sudo: yes

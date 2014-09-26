@@ -37,6 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   [ "provisioning/base_packages.yml",
     "provisioning/scala.yml",
     "provisioning/javascript.yml",
+    "provisioning/tmux.yml",
     "provisioning/mongo.yml"
   ].each { |x|
     config.vm.provision "ansible" do |ansible|

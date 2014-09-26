@@ -1,0 +1,10 @@
+# This playbook installs and configures tmux
+
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: install tmux
+    apt: name=tmux state=present
+
+  - name: setup tmux config
+    get_url: url=https://gist.githubusercontent.com/liuhongchao/33da4fef9e9f86e14db1/raw/bf1a4051889c7b6dc053912314b85ed5862e91b2/.tmux.conf dest=.

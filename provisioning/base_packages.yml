@@ -10,6 +10,9 @@
   - name: install ruby2.0
     apt: name=ruby2.0 state=present
 
+  - name: install ruby2.0-dev
+    apt: name=ruby2.0-dev state=present
+
   - name: install python-pip
     apt: name=python-pip state=present
 
@@ -27,9 +30,6 @@
 
   - name: install tig
     apt: name=tig state=present
-
-  - name: install tmux
-    apt: name=tmux state=present
 
   - name: install htop
     apt: name=htop state=present
@@ -67,3 +67,6 @@
 
   - name: install fig
     pip: name=fig
+
+  - name: install cowsay
+    apt: name=cowsay state=present
