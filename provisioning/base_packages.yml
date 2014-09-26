@@ -19,15 +19,6 @@
   - name: install python-dev
     apt: name=python-dev state=present
 
-  - name: install erlang-base-hipe
-    apt: name=erlang-base-hipe state=present
-
-  - name: install erlang-nox
-    apt: name=erlang-nox state=present
-
-  - name: install erlang-dev
-    apt: name=erlang-dev state=present
-
   - name: install tig
     apt: name=tig state=present
 

@@ -1,0 +1,13 @@
+# This playbook installs and configures erlang
+
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: install erlang-base-hipe
+    apt: name=erlang-base-hipe state=present
+
+  - name: install erlang-nox
+    apt: name=erlang-nox state=present
+
+  - name: install erlang-dev
+    apt: name=erlang-dev state=present

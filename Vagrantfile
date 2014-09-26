@@ -35,6 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   [ "provisioning/base_packages.yml",
+    "provisioning/erlang.yml",
     "provisioning/scala.yml",
     "provisioning/javascript.yml",
     "provisioning/tmux.yml",
