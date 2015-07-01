@@ -3,6 +3,16 @@
 
 - hosts: all
   tasks:
+  - name: install nodejs
+    apt: name=nodejs state=present
+
+  - name: symlink of node to nodejs
+    command: ln -s /usr/bin/nodejs /usr/bin/node
+    ignore_errors: True
+
+  - name: install npm
+    apt: name=npm state=present
+
   - name: install the awesome API renderer
     npm: name=aglio global=yes
     sudo: yes

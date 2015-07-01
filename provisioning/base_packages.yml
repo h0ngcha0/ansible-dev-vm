@@ -25,36 +25,11 @@
   - name: install htop
     apt: name=htop state=present
 
-  - name: install nodejs
-    apt: name=nodejs state=present
-
-  - name: symlink of node to nodejs
-    command: ln -s /usr/bin/nodejs /usr/bin/node
-    ignore_errors: True
-
-  - name: install npm
-    apt: name=npm state=present
-
   - name: install firefox
     apt: name=firefox state=present
 
   - name: install ansible 1.5.3
     apt: name=ansible state=present
-
-  - name: install open jdk
-    apt: name=openjdk-7-jdk state=present
-
-  - name: install maven
-    apt: name=maven state=present
-
-  - name: install docker io
-    apt: name=docker.io state=present
-
-  - name: symlink docker.io to docker
-    command: ln -sf /usr/bin/docker.io /usr/local/bin/docker
-
-  - name: set bash auto-complete for docker
-    command: sed -i '$acomplete -F _docker docker' /etc/bash_completion.d/docker.io
 
   - name: install fig
     pip: name=fig

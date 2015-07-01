@@ -3,7 +3,7 @@
 - hosts: all
   vars:
     scala_version: 2.11.1
-    sbt_version: 0.13.5
+    sbt_version: 0.13.7
   tasks:
   - name: create a temp directory
     command: mktemp -d /tmp/ansible-scala-XXXX

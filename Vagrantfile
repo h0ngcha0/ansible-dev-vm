@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
-  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/20140625/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
   system 'mkdir', '-p', 'Development'
   config.vm.synced_folder "Development/", "/home/vagrant/Development/"
@@ -20,6 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # jekyll port
   config.vm.network "forwarded_port", guest: 4000, host: 4000
   config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   config.vm.provider :virtualbox do |v|
     # OS X users seem to need this
@@ -35,11 +36,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   [ "provisioning/base_packages.yml",
+    "provisioning/java.yml",
+    "provisioning/docker.yml",
     "provisioning/erlang.yml",
     "provisioning/scala.yml",
     "provisioning/javascript.yml",
-    "provisioning/tmux.yml",
-    "provisioning/mongo.yml"
+    "provisioning/tmux.yml"
   ].each { |x|
     config.vm.provision "ansible" do |ansible|
       ansible.playbook = x
